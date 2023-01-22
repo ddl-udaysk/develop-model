@@ -76,11 +76,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          role-duration-seconds: 1200
           aws-region: us-west-2
-        env:
-          MODELNAME: ${{ vars.MODELNAME }}            
 
       # Runs a set of commands using the runners shell
       - name: Run sagemaker deploy script --
@@ -88,6 +84,6 @@ jobs:
           python3 coderepo/deploysagemaker.py
         env:
           MODELNAME: ${{ vars.MODELNAME }}    
-          
+
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
