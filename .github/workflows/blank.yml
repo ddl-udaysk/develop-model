@@ -62,7 +62,7 @@ jobs:
 
 
       # Runs a set of commands using the runners shell
-      #- name: Run model build and export script --------
+      #- name: Run model build and export script ---
       #  env:
       #    MODELNAME: ${{ vars.MODELNAME }}  
       #    PROJECT_NAME: ${{ vars.PROJECT_NAME }}  
