@@ -81,7 +81,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run sagemaker deploy script --
         run: |
-          python3 coderepo/deploysagemaker.py
+          python3 coderepo/deploytosagemaker.py
         env:
           MODELNAME: ${{ vars.MODELNAME }}    
 
