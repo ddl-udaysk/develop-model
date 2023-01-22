@@ -62,10 +62,14 @@ jobs:
 
 
       # Runs a set of commands using the runners shell
-      #- name: Run build script --
-      #  run: |
-      #    python3 coderepo/BuildAndExportModelToECR.py
-      #    echo test, and deploy your project.
+      - name: Run build script --
+        env:
+          MODELNAME: ${{ vars.MODELNAME }}  
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}  
+          USER_API_KEY: ${{ vars.USER_API_KEY }}  
+          ECRPASSWORD: ${{ secrets.ECRPASSWORD }}  
+        run: |
+          python3 coderepo/BuildAndExportModelToECR.py
 
 
       - name: Setup tmate session
