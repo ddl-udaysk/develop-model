@@ -62,14 +62,14 @@ jobs:
 
 
       # Runs a set of commands using the runners shell
-      - name: Run model build and export script --
-        env:
-          MODELNAME: ${{ vars.MODELNAME }}  
-          PROJECT_NAME: ${{ vars.PROJECT_NAME }}  
-          USER_API_KEY: ${{ vars.USER_API_KEY }}  
-          ECRPASSWORD: ${{ secrets.ECRPASSWORD }}  
-        run: |
-          python3 coderepo/BuildAndExportModelToECR.py
+      #- name: Run model build and export script --
+      #  env:
+      #    MODELNAME: ${{ vars.MODELNAME }}  
+      #    PROJECT_NAME: ${{ vars.PROJECT_NAME }}  
+      #    USER_API_KEY: ${{ vars.USER_API_KEY }}  
+      #    ECRPASSWORD: ${{ secrets.ECRPASSWORD }}  
+      #  run: |
+      #    python3 coderepo/BuildAndExportModelToECR.py
 
       - name: Configure AWS credentials from Production account
         uses: aws-actions/configure-aws-credentials@v1
@@ -78,6 +78,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: us-west-2
+        env:
+          MODELNAME: ${{ vars.MODELNAME }}            
 
       # Runs a set of commands using the runners shell
       - name: Run sagemaker deploy script --
