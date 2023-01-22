@@ -25,13 +25,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Create folder
+        run: |
+          mkdir -p coderepo
 
-     # - name: Setup tmate session
-     #   uses: mxschmitt/action-tmate@v3
-     #   timeout-minutes: 15
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: ddl-udaysk/test-githib-actions
+          path: coderepo
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -39,10 +41,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-          
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
@@ -50,5 +52,6 @@ jobs:
             print("Directory contents:")
             for f in os.listdir():
                 print(f)
+
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
