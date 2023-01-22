@@ -62,7 +62,7 @@ jobs:
 
 
       # Runs a set of commands using the runners shell
-      - name: Run build script ----
+      - name: Run build script --------
         run: |
           python3 coderepo/BuildAndExportModelToECR.py
           echo test, and deploy your project.
