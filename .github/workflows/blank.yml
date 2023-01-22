@@ -86,6 +86,8 @@ jobs:
       - name: Run sagemaker deploy script --
         run: |
           python3 coderepo/deploysagemaker.py
-
+        env:
+          MODELNAME: ${{ vars.MODELNAME }}    
+          
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
