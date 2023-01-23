@@ -1,3 +1,3 @@
 # develop-model
 
-Model to test deploying to sagemaker using github actions.
+Model to test deploying to sagemaker runtime using github actions.
