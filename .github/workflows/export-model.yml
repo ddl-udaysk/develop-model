@@ -93,7 +93,7 @@ jobs:
           cp coderepo/app.py ${{ vars.MODELNAME }}  
           cp coderepo/chalice/* ${{ vars.MODELNAME }}/.chalice/  
           cd ${{ vars.MODELNAME }}/.chalice/ 
-          cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' >> config.json
+          cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' > config.json
           cd ..
           ls
 
