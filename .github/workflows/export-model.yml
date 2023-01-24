@@ -75,3 +75,25 @@ jobs:
           MODELNAME: ${{ vars.MODELNAME }}    
 
 
+      # Runs a set of commands using the runners shell
+      - name: Run install chalice ----
+        run: |
+          python3 -m pip install chalice
+
+      # Runs a set of commands using the runners shell
+      - name: Run install chalice ----
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
+
+      # Runs a set of commands using the runners shell
+      - name: Run create chalice project----
+        run: |
+          chalice new-project  ${{ vars.MODELNAME }}  
+          cp coderepo/app.py ${{ vars.MODELNAME }}  
+          cp coderepo/chalice/* ${{ vars.MODELNAME }}/chalice/  
+          cd ${{ vars.MODELNAME }}/chalice/ 
+          cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' >> config.json
+          cd ..
+          ls
+          chalice deploy
