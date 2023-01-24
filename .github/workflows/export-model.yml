@@ -96,8 +96,6 @@ jobs:
           cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' > config.json
           cd ..
           ls
-
-
-      - name: Run create chalice project----
-        run: |
           chalice deploy
+
+
