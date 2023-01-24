@@ -96,4 +96,10 @@ jobs:
           cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' >> config.json
           cd ..
           ls
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
+      - name: Run create chalice project----
+        run: |
           chalice deploy
