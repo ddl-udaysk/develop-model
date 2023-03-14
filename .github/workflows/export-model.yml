@@ -98,9 +98,10 @@ jobs:
           pwd
           FILE=../.github/dev.json
           if [ -f "$FILE" ]; then
-              cp -R ../.github/dev.json .chalice/deployed
-              # chalice deploy
-              echo "Not first run"
+              mkdir .chalice/deployed
+              cp  ../.github/dev.json .chalice/deployed/dev.json
+              chalice deploy
+              echo "Re deployed the App"
           else 
               chalice deploy
               cp .chalice/deployed/dev.json ../.github/
@@ -110,7 +111,7 @@ jobs:
               git config --global user.name "api deployment"
               git commit -m "api deployment"
               git push origin
-              echo "First run"
+              echo "Deployed the app for first time"
           fi
           
       - name: Setup tmate session
