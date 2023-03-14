@@ -98,9 +98,11 @@ jobs:
           pwd
           FILE=../.github/dev.json
           if [ -f "$FILE" ]; then
-              cp ../.github/dev.json .chalice/deployed
+              cp -R ../.github/dev.json .chalice/deployed
+              chalice deploy
               echo "Not first run"
           else 
+              chalice deploy
               cp .chalice/deployed/dev.json ../.github/
               git add .github/dev.json
               git config --global user.email "model@dominodatalab.com"
@@ -109,7 +111,7 @@ jobs:
               git push origin
               echo "First run"
           fi
-          chalice deploy
+          
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
