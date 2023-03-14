@@ -96,12 +96,12 @@ jobs:
           cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' > config.json
           cd ..
           pwd
-          FILE=.github/dev.json
+          FILE=../.github/dev.json
           if [ -f "$FILE" ]; then
-              cp .github/dev.json coderepo/api-endpoint/.chalice/deployed
+              cp ../.github/dev.json .chalice/deployed
               echo "Not first run"
           else 
-              cp coderepo/api-endpoint/.chalice/deployed/dev.json .github/
+              cp .chalice/deployed/dev.json ../.github/
               git add .github/dev.json
               git config --global user.email "model@dominodatalab.com"
               git config --global user.name "api deployment"
