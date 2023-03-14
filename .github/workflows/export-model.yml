@@ -99,7 +99,7 @@ jobs:
           FILE=../.github/dev.json
           if [ -f "$FILE" ]; then
               cp -R ../.github/dev.json .chalice/deployed
-              chalice deploy
+              # chalice deploy
               echo "Not first run"
           else 
               chalice deploy
