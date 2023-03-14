@@ -104,6 +104,7 @@ jobs:
           else 
               chalice deploy
               cp .chalice/deployed/dev.json ../.github/
+              cd ..
               git add .github/dev.json
               git config --global user.email "model@dominodatalab.com"
               git config --global user.name "api deployment"
