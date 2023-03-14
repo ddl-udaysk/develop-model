@@ -95,7 +95,20 @@ jobs:
           cd ${{ vars.MODELNAME }}/.chalice/ 
           cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' > config.json
           cd ..
-          ls
+          pwd
+          FILE=.github/dev.json
+          if [ -f "$FILE" ]; then
+              cp .github/dev.json coderepo/api-endpoint/.chalice/deployed
+              echo "Not first run"
+          else 
+              cp coderepo/api-endpoint/.chalice/deployed/dev.json .github/
+              git add .github/dev.json
+              git config --global user.email "model@dominodatalab.com"
+              git config --global user.name "api deployment"
+              git commit -m "api deployment"
+              git push origin
+              echo "First run"
+          fi
           chalice deploy
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
