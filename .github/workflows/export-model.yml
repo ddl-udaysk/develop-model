@@ -109,6 +109,8 @@ jobs:
               git push origin
               echo "Deployed the app for first time"
           fi
+        env:
+          MODELNAME: ${{ vars.MODELNAME }}
 
 
 
