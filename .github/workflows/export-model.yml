@@ -33,11 +33,6 @@ jobs:
           repository: ddl-udaysk/test-githib-actions
           token: ${{ secrets.CODE }}
           path: coderepo
-
-      # Runs a set of commands using the runners shell
-      - name: Run a display command
-        run: |
-          echo Add other actions to build,
          
       - uses: actions/setup-python@v4
         with:
@@ -113,8 +108,6 @@ jobs:
               git push origin
               echo "Deployed the app for first time"
           fi
-          
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+
 
 
