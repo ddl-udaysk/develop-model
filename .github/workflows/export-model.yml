@@ -90,6 +90,7 @@ jobs:
           cp coderepo/chalice/* ${{ vars.MODELNAME }}/.chalice/  
           cd ${{ vars.MODELNAME }}/.chalice/ 
           cat config-template.json | jq --arg name ${{ vars.MODELNAME }} '. + {"app_name": $name}' > config.json
+          cat config.json | jq --arg name ${{ vars.MODELNAME }} '. + {"environment_variables": {"MODELNAME": $name}}' > config.json
           cd ..
           pwd
           FILE=../.github/dev.json
