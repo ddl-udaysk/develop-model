@@ -38,6 +38,13 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Configure AWS credentials from Production account
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2          
+
       # Runs a set of commands using the runners shell
       - name: Run a setup python libraries
         run: |
@@ -55,12 +62,6 @@ jobs:
         run: |
           python3 coderepo/BuildAndExportModelToECR.py
 
-      - name: Configure AWS credentials from Production account
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
 
       # Runs a set of commands using the runners shell
       - name: Run sagemaker deploy script ----
