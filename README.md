@@ -2,7 +2,7 @@
 
 Steps/Runbook
 
-1) Add the workflow file present at /.github/workflows/export-model.yml to the model project
+1) Add the workflow file present at /.github/workflows/export-model.yml to the model project. The workflow uses the scripts from the repo    https://github.com/ddl-udaysk/domino-sagemaker-github-actions
 
 2) Create the secrets listed below : <br>
   AWS_ACCESS_KEY_ID -> AWS access key <br>
