@@ -19,10 +19,10 @@ Steps/Runbook
 
 4) Create a branch of the model project and work on the branch to develop the model in domino using workspaces
 
-5) Merge the branch to the main to start the github actions and the logs should have the api to be used. You can test the endpoint using Curl as show below:
+5) Merge the branch to the main to start the github actions and the logs should have the api to be used. You can test the endpoint using Curl as show below:<br>
    curl https://r039xwjush.execute-api.us-west-2.amazonaws.com/api/api -H 'Content-Type: application/json' -d '{"data": {"start": 1, "stop": 100}}'
-
+<br>
    Please note that we need to /api to the endpoint that we get from the logs.
-
+<br>
  ![Screen Shot 2023-04-17 at 1 46 49 PM](https://user-images.githubusercontent.com/97467901/232567938-30212e57-9562-49cd-b44b-4db67d0b9f87.png)
 ![Screen Shot 2023-04-17 at 1 48 05 PM](https://user-images.githubusercontent.com/97467901/232568169-4c36be19-c9c8-415c-8f07-ba99da2e14a2.png)
